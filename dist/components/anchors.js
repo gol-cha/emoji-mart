@@ -109,6 +109,8 @@ var Anchors = function (_React$PureComponent) {
             return null;
           }
 
+          var iconId = id.startsWith('custom-') ? 'custom' : id;
+
           return _react2.default.createElement(
             'span',
             {
@@ -119,7 +121,7 @@ var Anchors = function (_React$PureComponent) {
               className: 'emoji-mart-anchor ' + (isSelected ? 'emoji-mart-anchor-selected' : ''),
               style: { color: isSelected ? color : null }
             },
-            _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _this2.getSVG(id) } }),
+            _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: _this2.getSVG(iconId) } }),
             _react2.default.createElement('span', {
               className: 'emoji-mart-anchor-bar',
               style: { backgroundColor: color }

@@ -39,6 +39,7 @@ function sanitize(emoji) {
   var emoticons = emoji.emoticons;
   var unified = emoji.unified;
   var custom = emoji.custom;
+  var customCategory = emoji.customCategory;
   var imageUrl = emoji.imageUrl;
   var id = emoji.id || short_names[0];
   var colons = ':' + id + ':';
@@ -50,6 +51,7 @@ function sanitize(emoji) {
       colons: colons,
       emoticons: emoticons,
       custom: custom,
+      customCategory: customCategory,
       imageUrl: imageUrl
     };
   }

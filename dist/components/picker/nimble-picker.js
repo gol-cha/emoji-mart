@@ -4,6 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _values = require('babel-runtime/core-js/object/values');
+
+var _values2 = _interopRequireDefault(_values);
+
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
 var _extends2 = require('../../polyfills/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
@@ -82,8 +90,9 @@ var NimblePicker = function (_React$PureComponent) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (NimblePicker.__proto__ || (0, _objectGetPrototypeOf2.default)(NimblePicker)).call(this, props));
 
+    _this.CUSTOM = [];
+
     _this.RECENT_CATEGORY = { id: 'recent', name: 'Recent', emojis: null };
-    _this.CUSTOM_CATEGORY = { id: 'custom', name: 'Custom', emojis: [] };
     _this.SEARCH_CATEGORY = {
       id: 'search',
       name: 'Search',
@@ -106,15 +115,34 @@ var NimblePicker = function (_React$PureComponent) {
     var allCategories = [].concat(_this.data.categories);
 
     if (props.custom.length > 0) {
-      _this.CUSTOM_CATEGORY.emojis = props.custom.map(function (emoji) {
-        return (0, _extends3.default)({}, emoji, {
+      var customCategories = {};
+      var customCategoriesCreated = 0;
+
+      props.custom.forEach(function (emoji) {
+        if (!customCategories[emoji.customCategory]) {
+          customCategories[emoji.customCategory] = {
+            id: emoji.customCategory ? 'custom-' + emoji.customCategory : 'custom',
+            name: emoji.customCategory || 'Custom',
+            emojis: [],
+            anchor: customCategoriesCreated === 0
+          };
+
+          customCategoriesCreated++;
+        }
+
+        var category = customCategories[emoji.customCategory];
+
+        var customEmoji = (0, _extends3.default)({}, emoji, {
           // `<Category />` expects emoji to have an `id`.
           id: emoji.short_names[0],
           custom: true
         });
+
+        category.emojis.push(customEmoji);
+        _this.CUSTOM.push(customEmoji);
       });
 
-      allCategories.push(_this.CUSTOM_CATEGORY);
+      allCategories.push.apply(allCategories, (0, _toConsumableArray3.default)((0, _values2.default)(customCategories)));
     }
 
     _this.hideRecent = true;
@@ -251,7 +279,7 @@ var NimblePicker = function (_React$PureComponent) {
       }
 
       // Use Array.prototype.find() when it is more widely supported.
-      var emojiData = this.CUSTOM_CATEGORY.emojis.filter(function (customEmoji) {
+      var emojiData = this.CUSTOM.filter(function (customEmoji) {
         return customEmoji.id === emoji.id;
       })[0];
       for (var key in emojiData) {
@@ -563,7 +591,7 @@ var NimblePicker = function (_React$PureComponent) {
           emojisToShowFilter: emojisToShowFilter,
           include: include,
           exclude: exclude,
-          custom: this.CUSTOM_CATEGORY.emojis,
+          custom: this.CUSTOM,
           autoFocus: autoFocus
         }),
         _react2.default.createElement(
@@ -586,7 +614,7 @@ var NimblePicker = function (_React$PureComponent) {
               data: _this4.data,
               i18n: _this4.i18n,
               recent: category.id == _this4.RECENT_CATEGORY.id ? recent : undefined,
-              custom: category.id == _this4.RECENT_CATEGORY.id ? _this4.CUSTOM_CATEGORY.emojis : undefined,
+              custom: category.id == _this4.RECENT_CATEGORY.id ? _this4.CUSTOM : undefined,
               emojiProps: {
                 native: native,
                 skin: skin,

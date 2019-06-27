@@ -209,6 +209,8 @@ var Category = function (_React$Component) {
         };
       }
 
+      var label = i18n.categories[id] || name;
+
       return React.createElement(
         'div',
         {
@@ -226,7 +228,7 @@ var Category = function (_React$Component) {
           React.createElement(
             'span',
             { style: labelSpanStyles, ref: this.setLabelRef },
-            i18n.categories[id]
+            label
           )
         ),
         emojis && emojis.map(function (emoji) {
