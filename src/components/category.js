@@ -166,6 +166,8 @@ export default class Category extends React.Component {
       }
     }
 
+    const label = i18n.categories[id] || name
+
     return (
       <div
         ref={this.setContainerRef}
@@ -180,7 +182,7 @@ export default class Category extends React.Component {
           className="emoji-mart-category-label"
         >
           <span style={labelSpanStyles} ref={this.setLabelRef}>
-            {i18n.categories[id]}
+            {label}
           </span>
         </div>
 

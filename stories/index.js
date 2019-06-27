@@ -13,7 +13,8 @@ const CUSTOM_EMOJIS = [
     name: 'Octocat',
     short_names: ['octocat'],
     keywords: ['github'],
-    imageUrl: 'https://assets-cdn.github.com/images/icons/emoji/octocat.png?v7'
+    imageUrl: 'https://assets-cdn.github.com/images/icons/emoji/octocat.png?v7',
+    customCategory: 'GitHub'
   },
   {
     name: 'Squirrel',

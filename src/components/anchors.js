@@ -54,6 +54,8 @@ export default class Anchors extends React.PureComponent {
             return null
           }
 
+          const iconId = id.startsWith('custom-') ? 'custom' : id
+
           return (
             <span
               key={id}
@@ -65,7 +67,7 @@ export default class Anchors extends React.PureComponent {
               }`}
               style={{ color: isSelected ? color : null }}
             >
-              <div dangerouslySetInnerHTML={{ __html: this.getSVG(id) }} />
+              <div dangerouslySetInnerHTML={{ __html: this.getSVG(iconId) }} />
               <span
                 className="emoji-mart-anchor-bar"
                 style={{ backgroundColor: color }}
