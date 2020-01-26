@@ -25,7 +25,7 @@ var EmojiDefaultProps = {
   forceSize: false,
   tooltip: false,
   backgroundImageFn: function backgroundImageFn(set, sheetSize) {
-    return 'https://unpkg.com/emoji-datasource-' + set + '@' + '4.0.4' + '/img/' + set + '/sheets-256/' + sheetSize + '.png';
+    return 'https://unpkg.com/emoji-datasource-' + set + '@' + '^6.0.0' + '/img/' + set + '/sheets-256/' + sheetSize + '.png';
   },
   onOver: function onOver() {},
   onLeave: function onLeave() {},

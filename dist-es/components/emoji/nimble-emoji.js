@@ -5,7 +5,7 @@ import { getData, getSanitizedData, unifiedToNative } from '../../utils';
 import { uncompress } from '../../utils/data';
 import { EmojiPropTypes, EmojiDefaultProps } from '../../utils/shared-props';
 
-var SHEET_COLUMNS = 52;
+var SHEET_COLUMNS = 58;
 
 var _getData = function _getData(props) {
   var emoji = props.emoji;

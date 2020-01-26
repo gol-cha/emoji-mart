@@ -20,7 +20,7 @@ var _sharedProps = require('../../utils/shared-props');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SHEET_COLUMNS = 52;
+var SHEET_COLUMNS = 58;
 
 var _getData = function _getData(props) {
   var emoji = props.emoji;

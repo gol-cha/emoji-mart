@@ -16,8 +16,6 @@ const EmojiPropTypes = {
     'apple',
     'google',
     'twitter',
-    'emojione',
-    'messenger',
     'facebook',
   ]),
   size: PropTypes.number.isRequired,

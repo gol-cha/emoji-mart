@@ -5,7 +5,7 @@ import { getData, getSanitizedData, unifiedToNative } from '../../utils'
 import { uncompress } from '../../utils/data'
 import { EmojiPropTypes, EmojiDefaultProps } from '../../utils/shared-props'
 
-const SHEET_COLUMNS = 52
+const SHEET_COLUMNS = 58
 
 const _getData = (props) => {
   var { emoji, skin, set, data } = props
