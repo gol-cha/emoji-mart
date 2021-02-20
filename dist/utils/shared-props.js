@@ -23,7 +23,7 @@ var EmojiPropTypes = {
   tooltip: _propTypes2.default.bool,
   skin: _propTypes2.default.oneOf([1, 2, 3, 4, 5, 6]),
   sheetSize: _propTypes2.default.oneOf([16, 20, 32, 64]),
-  set: _propTypes2.default.oneOf(['apple', 'google', 'twitter', 'emojione', 'messenger', 'facebook']),
+  set: _propTypes2.default.oneOf(['apple', 'google', 'twitter', 'facebook']),
   size: _propTypes2.default.number.isRequired,
   emoji: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]).isRequired
 };
@@ -36,7 +36,7 @@ var EmojiDefaultProps = {
   forceSize: false,
   tooltip: false,
   backgroundImageFn: function backgroundImageFn(set, sheetSize) {
-    return 'https://unpkg.com/emoji-datasource-' + set + '@' + '^6.0.0' + '/img/' + set + '/sheets-256/' + sheetSize + '.png';
+    return 'https://unpkg.com/emoji-datasource-' + set + '@' + EMOJI_DATASOURCE_VERSION + '/img/' + set + '/sheets-256/' + sheetSize + '.png';
   },
   onOver: function onOver() {},
   onLeave: function onLeave() {},

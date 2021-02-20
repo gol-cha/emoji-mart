@@ -109,19 +109,21 @@ function getData(emoji, skin, set, data) {
   if (emojiData.skin_variations && skin > 1 && set) {
     emojiData = JSON.parse(_JSON.stringify(emojiData));
 
-    var skinKey = SKINS[skin - 1],
-        variationData = emojiData.skin_variations[skinKey];
+    var skinKey = SKINS[skin - 1];
+    if (emojiData.skin_variations[skinKey] !== undefined) {
+      var variationData = emojiData.skin_variations[skinKey];
 
-    if (!variationData.variations && emojiData.variations) {
-      delete emojiData.variations;
-    }
+      if (!variationData.variations && emojiData.variations) {
+        delete emojiData.variations;
+      }
 
-    if (variationData['has_img_' + set] == undefined || variationData['has_img_' + set]) {
-      emojiData.skin_tone = skin;
+      if (set && (variationData['has_img_' + set] == undefined || variationData['has_img_' + set]) || !set) {
+        emojiData.skin_tone = skin;
 
-      for (var k in variationData) {
-        var v = variationData[k];
-        emojiData[k] = v;
+        for (var k in variationData) {
+          var v = variationData[k];
+          emojiData[k] = v;
+        }
       }
     }
   }

@@ -1,20 +1,21 @@
-const EmojiDefaultProps = {
+var EmojiDefaultProps = {
   skin: 1,
   set: 'apple',
   sheetSize: 64,
-  sheetColumns: 58,
-  sheetRows: 58,
+  sheetColumns: 57,
+  sheetRows: 57,
   native: false,
   forceSize: false,
   tooltip: false,
-  backgroundImageFn: (set, sheetSize) =>
-    `https://unpkg.com/emoji-datasource-${set}@${EMOJI_DATASOURCE_VERSION}/img/${set}/sheets-256/${sheetSize}.png`,
-}
+  backgroundImageFn: function backgroundImageFn(set, sheetSize) {
+    return 'https://unpkg.com/emoji-datasource-' + set + '@' + EMOJI_DATASOURCE_VERSION + '/img/' + set + '/sheets-256/' + sheetSize + '.png';
+  }
+};
 
-const PickerDefaultProps = {
-  onClick: () => {},
-  onSelect: () => {},
-  onSkinChange: () => {},
+var PickerDefaultProps = {
+  onClick: function onClick() {},
+  onSelect: function onSelect() {},
+  onSkinChange: function onSkinChange() {},
   emojiSize: 24,
   perLine: 9,
   i18n: {},
@@ -31,17 +32,14 @@ const PickerDefaultProps = {
   emojisToShowFilter: null,
   showPreview: true,
   showSkinTones: true,
-  darkMode: !!(
-    typeof matchMedia === 'function' &&
-    matchMedia('(prefers-color-scheme: dark)').matches
-  ),
+  darkMode: !!(typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches),
   emojiTooltip: EmojiDefaultProps.tooltip,
   autoFocus: false,
   custom: [],
   skinEmoji: '',
-  notFound: () => {},
+  notFound: function notFound() {},
   notFoundEmoji: 'sleuth_or_spy',
-  icons: {},
-}
+  icons: {}
+};
 
-export { PickerDefaultProps, EmojiDefaultProps }
+export { PickerDefaultProps, EmojiDefaultProps };
